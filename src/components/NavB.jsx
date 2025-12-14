@@ -1,9 +1,23 @@
-import { Form, Button, Container, Nav, Navbar, Offcanvas } from 'react-bootstrap';
+import { useState } from 'react';
+import {
+    Form,
+    Button,
+    Container,
+    Nav,
+    Navbar,
+    Offcanvas
+} from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
 
 function NavB({ log, search, setSearch, setLog, setProfile }) {
 
-    const loc = useLocation();
+    const location = useLocation();
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const isActive = (path) => location.pathname === path;
 
     const logOut = () => {
         setLog(null);
@@ -17,7 +31,20 @@ function NavB({ log, search, setSearch, setLog, setProfile }) {
             phone: null,
             location: null
         });
+
+        handleClose();
     };
+
+    const NavItem = ({ to, children }) => (
+        <Nav.Link
+            as={Link}
+            to={to}
+            onClick={handleClose}
+            className={isActive(to) ? "fw-bold text-success" : ""}
+        >
+            {children}
+        </Nav.Link>
+    );
 
     return (
         <Navbar bg="light" fixed="top" expand="lg" className="shadow-sm">
@@ -27,45 +54,41 @@ function NavB({ log, search, setSearch, setLog, setProfile }) {
                     <i className="bi bi-boombox-fill fs-4"></i>
                 </Navbar.Brand>
 
-                {/* Toggle appears only below lg */}
-                <Navbar.Toggle aria-controls="responsive-navbar" />
+                <Navbar.Toggle onClick={handleShow} />
 
-                {/* Collapsed (Offcanvas on small screens) */}
                 <Navbar.Offcanvas
-                    id="responsive-navbar"
-                    aria-labelledby="responsive-navbar-label"
+                    show={show}
+                    onHide={handleClose}
                     placement="end"
                 >
                     <Offcanvas.Header closeButton>
-                        <Offcanvas.Title id="responsive-navbar-label">
-                            Job Portal
-                        </Offcanvas.Title>
+                        <Offcanvas.Title>Job Portal</Offcanvas.Title>
                     </Offcanvas.Header>
 
                     <Offcanvas.Body>
-                        <Nav className="me-auto">
 
-                            <Nav.Link as={Link} to="/">Home</Nav.Link>
-                            <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
-                            <Nav.Link as={Link} to="/job-search">Job Search</Nav.Link>
-                            <Nav.Link as={Link} to="/interview">Interview Preparation</Nav.Link>
+                        <Nav className="me-auto">
+                            <NavItem to="/">Home</NavItem>
+                            <NavItem to="/profile">Profile</NavItem>
+                            <NavItem to="/job-search">Job Search</NavItem>
+                            <NavItem to="/interview">Interview Preparation</NavItem>
 
                             {log?.admin && (
                                 <>
-                                    <Nav.Link as={Link} to="/users">See Users</Nav.Link>
-                                    <Nav.Link as={Link} to="/add-job">Add Job</Nav.Link>
+                                    <NavItem to="/users">See Users</NavItem>
+                                    <NavItem to="/add-job">Add Job</NavItem>
                                 </>
                             )}
 
                             {!log && (
                                 <>
-                                    <Nav.Link as={Link} to="/login">Login</Nav.Link>
-                                    <Nav.Link as={Link} to="/signup">Signup</Nav.Link>
+                                    <NavItem to="/login">Login</NavItem>
+                                    <NavItem to="/signup">Signup</NavItem>
                                 </>
                             )}
 
-                            <Nav.Link as={Link} to="/contact">Contact Us</Nav.Link>
-                            <Nav.Link as={Link} to="/about">About</Nav.Link>
+                            <NavItem to="/contact">Contact Us</NavItem>
+                            <NavItem to="/about">About</NavItem>
 
                             {log && (
                                 <Button
@@ -78,8 +101,7 @@ function NavB({ log, search, setSearch, setLog, setProfile }) {
                             )}
                         </Nav>
 
-                        {/* Search bar only on Job Search page */}
-                        {loc.pathname === "/job-search" && (
+                        {location.pathname === "/job-search" && (
                             <Form className="d-flex mt-4 mt-lg-0">
                                 <Form.Control
                                     type="search"
@@ -89,10 +111,11 @@ function NavB({ log, search, setSearch, setLog, setProfile }) {
                                 />
                             </Form>
                         )}
+
                     </Offcanvas.Body>
                 </Navbar.Offcanvas>
 
-                {/* Desktop Logout button */}
+                {/* Desktop logout */}
                 {log && (
                     <Button
                         variant="outline-danger"
