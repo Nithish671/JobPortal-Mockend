@@ -1,0 +1,148 @@
+{
+  "jobs": [
+    {
+      "id": "187b",
+      "org": "Wipro",
+      "title": "Junior Software Engineer",
+      "jd": "We are seeking a highly skilled Java Full-Stack Developer to design, develop, and maintain scalable web applications. The ideal candidate should be proficient in Java/Spring Boot on the backend and React/Angular/Vue on the frontend, with a solid understanding of databases, APIs, and modern cloud environments.",
+      "skills": "html, css and java",
+      "exp": "0"
+    },
+    {
+      "id": "5e12",
+      "org": "TCS",
+      "title": "Software Tester",
+      "jd": "We are seeking a highly skilled Java Full-Stack Developer to design, develop, and maintain scalable web applications. The ideal candidate should be proficient in Java/Spring Boot on the backend and React/Angular/Vue on the frontend, with a solid understanding of databases, APIs, and modern cloud environments.",
+      "skills": "Selenium, automation testing",
+      "exp": "3"
+    },
+    {
+      "id": "603c",
+      "org": "InfoSys",
+      "title": "HR",
+      "jd": "We are seeking a highly skilled Java Full-Stack Developer to design, develop, and maintain scalable web applications. The ideal candidate should be proficient in Java/Spring Boot on the backend and React/Angular/Vue on the frontend, with a solid understanding of databases, APIs, and modern cloud environments.",
+      "skills": "Microsoft Excel, Microsoft Office.",
+      "exp": "1"
+    },
+    {
+      "id": "ab24",
+      "org": "Accenture",
+      "title": "React Developer",
+      "jd": "We are seeking a highly skilled Java Full-Stack Developer to design, develop, and maintain scalable web applications. The ideal candidate should be proficient in Java/Spring Boot on the backend and React/Angular/Vue on the frontend, with a solid understanding of databases, APIs, and modern cloud environments.",
+      "skills": "Microsoft Excel, Microsoft Office.",
+      "exp": "1"
+    },
+    {
+      "id": "aa41",
+      "org": "Accenture",
+      "title": "Frontend Developer",
+      "jd": "We are seeking a highly skilled Java Full-Stack Developer to design, develop, and maintain scalable web applications. The ideal candidate should be proficient in Java/Spring Boot on the backend and React/Angular/Vue on the frontend, with a solid understanding of databases, APIs, and modern cloud environments.",
+      "skills": "html, css, bootstrap, react",
+      "exp": "0"
+    },
+    {
+      "id": "b619",
+      "org": "InfoSys",
+      "title": "Software Developer",
+      "jd": "We are seeking a highly skilled Java Full-Stack Developer to design, develop, and maintain scalable web applications. The ideal candidate should be proficient in Java/Spring Boot on the backend and React/Angular/Vue on the frontend, with a solid understanding of databases, APIs, and modern cloud environments.",
+      "skills": "Java, React, Git",
+      "exp": "4"
+    }
+  ],
+  "users": [
+    {
+      "id": "d9b7",
+      "name": "murugan",
+      "email": "muru@gmail.com",
+      "password": "1234",
+      "admin": true,
+      "appJobs": [
+        "187b"
+      ]
+    },
+    {
+      "id": "7dd2",
+      "name": "Gurunandagopal",
+      "email": "gurunanda@gmail.com",
+      "password": "Guru",
+      "admin": false
+    },
+    {
+      "id": "231d",
+      "name": "Nithish",
+      "email": "nnithish671@gmail.com",
+      "password": "1234",
+      "admin": true
+    }
+  ],
+  "profile": [
+    {
+      "id": "0a3d",
+      "email": "muru@gmail.com",
+      "skills": [
+        "java",
+        "css",
+        "javascript"
+      ],
+      "experience": [
+        {
+          "name": "S",
+          "joinD": "2025-12-26",
+          "lastW": "2025-12-17",
+          "role": "aasasasa"
+        },
+        {
+          "name": "Murugan",
+          "joinD": "2025-12-11",
+          "lastW": "2026-01-01",
+          "role": "Software"
+        },
+        {
+          "name": "ceequence techonology",
+          "joinD": "2025-10-09",
+          "lastW": "2025-12-13",
+          "role": "IT Developer"
+        }
+      ],
+      "summary": "jffodfpddfdfkdfpdfdfkdfldfldfdf,dd,,fd,",
+      "phone": "2322343434",
+      "location": "Achankuttam"
+    },
+    {
+      "id": "eb16",
+      "email": "gurunanda@gmail.com",
+      "skills": [
+        "SAPGL"
+      ],
+      "experience": [
+        {
+          "name": "Avenue",
+          "joinD": "2022-09-20",
+          "lastW": "2025-12-13",
+          "role": "Accounts"
+        }
+      ],
+      "summary": null,
+      "phone": null,
+      "location": null
+    },
+    {
+      "id": "5efa",
+      "email": "nnithish671@gmail.com",
+      "skills": [
+        "java"
+      ],
+      "experience": [
+        {
+          "name": "Hello",
+          "joinD": "2025-12-01",
+          "lastW": "2025-12-14",
+          "role": "Demo role"
+        }
+      ],
+      "summary": "Summary",
+      "phone": "1234567890",
+      "location": "Tenkasi"
+    }
+  ]
+}
