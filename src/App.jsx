@@ -3,8 +3,6 @@ import './App.css'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import NavB from './components/NavB'
 import Home from './components/Home'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap-icons/font/bootstrap-icons.css'
 import Break from './components/Break'
 import Profile from './components/Profile'
 import Signup from './components/Signup'
