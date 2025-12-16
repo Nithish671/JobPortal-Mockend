@@ -47,6 +47,14 @@
       "jd": "We are seeking a highly skilled Java Full-Stack Developer to design, develop, and maintain scalable web applications. The ideal candidate should be proficient in Java/Spring Boot on the backend and React/Angular/Vue on the frontend, with a solid understanding of databases, APIs, and modern cloud environments.",
       "skills": "Java, React, Git",
       "exp": "4"
+    },
+    {
+      "id": "21d3",
+      "org": "InfoSys",
+      "title": "Manual Testing",
+      "jd": "We are seeking a highly skilled Java Full-Stack Developer to design, develop, and maintain scalable web applications. The ideal candidate should be proficient in Java/Spring Boot on the backend and React/Angular/Vue on the frontend, with a solid understanding of databases, APIs, and modern cloud environments.",
+      "skills": "Java, React, Git",
+      "exp": "4"
     }
   ],
   "users": [
@@ -143,6 +151,20 @@
       "summary": "Summary",
       "phone": "1234567890",
       "location": "Tenkasi"
+    }
+  ],
+  "query": [
+    {
+      "id": "0983",
+      "name": "Nithish",
+      "email": "nnithish671@gmail.com",
+      "msg": "hello"
+    },
+    {
+      "id": "20b6",
+      "name": "Nithish",
+      "email": "nnithish671@gmail.com",
+      "msg": "kjdfkjdkjfjdkj"
     }
   ]
 }

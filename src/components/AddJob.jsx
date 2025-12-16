@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Button, FloatingLabel, Form } from 'react-bootstrap'
+import { Button, FloatingLabel, Form, Container, Row, Alert, Col } from 'react-bootstrap'
 import api from '../api/api';
 
-const AddJob = ({getJobs}) => {
+const AddJob = ({ getJobs }) => {
 
     const [job, setJob] = useState({
         org: "",
@@ -12,9 +12,15 @@ const AddJob = ({getJobs}) => {
         exp: ""
     });
 
+    const [msg, setMsg] = useState({
+        show: false,
+        type: "",
+        text: ""
+    });
+
     const handleChange = (e) => {
 
-        setJob({...job, [e.target.name]: e.target.value});
+        setJob({ ...job, [e.target.name]: e.target.value });
     }
 
     const handleSubmit = async (e) => {
@@ -22,21 +28,40 @@ const AddJob = ({getJobs}) => {
 
         const res = await api.post("/jobs", job);
 
-        alert("Job added!");
+        setMsg({
+            show: true,
+            type: "success",
+            text: "Job added successfully!"
+        });
+
+        setTimeout(() => {
+            setMsg({...msg, show: false});
+        }, 2000);
 
         setJob({
-        org: "",
-        title: "",
-        jd: "",
-        skills: "",
-        exp: ""
-    });
+            org: "",
+            title: "",
+            jd: "",
+            skills: "",
+            exp: ""
+        });
 
-    getJobs();
+        getJobs();
     }
 
     return (
         <section className='shadow-lg p-3 m-3 bg-body-tertiary rounded'>
+
+            {msg.show &&
+                <Container>
+                    <Row className='justify-content-center'>
+                        <Col md={7}>
+                            <Alert className='mt-5' variant={msg.type} dismissible onClose={() => setMsg({ ...msg, show: false })}>{msg.text}</Alert>
+                        </Col>
+                    </Row>
+                </Container>
+            }
+
             <h2 className='text-primary text-center mb-3'>Add Job</h2>
             <Form onSubmit={handleSubmit} className='w-75 m-auto'>
                 <FloatingLabel
@@ -72,7 +97,7 @@ const AddJob = ({getJobs}) => {
                         as="textarea"
                         placeholder="Leave a comment here"
                         style={{ height: '100px' }}
-                        name='jd' 
+                        name='jd'
                         onChange={handleChange}
                         value={job.jd}
                         required
