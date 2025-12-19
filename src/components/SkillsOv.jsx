@@ -23,7 +23,9 @@ const SkillsOv = ({profile, setProfile}) => {
 
         setProfile({...profile, skills: ski});
 
-        await api.put(`/profile/${profile.id}`, profile);
+        const res = (await api.put(`/update-profile`, profile)).data;
+
+        setProfile(res);
 
         setSkill('');
     };

@@ -3,20 +3,20 @@ import { Button, Card, Badge, Row, Col } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom'
 import api from '../api/api';
 
-const JobPoster = ({ log, setLog, refLog }) => {
+const JobPoster = ({ log, setLog, refLog, getJobs }) => {
 
     const { state } = useLocation();
     const { job } = state;
 
-    const applyJob = async (jobId) => {
+    const applyJob = async (logId,jobId) => {
 
-        const aJobs = log.appJobs;
+        job.appId.push(logId);
 
-        aJobs.push(jobId);
+        const res = (await api.put(`/apply-job/${logId}/${jobId}`, job)).data;
 
-        setLog({ ...log, appJobs: aJobs });
+        console.log(res);
 
-        const res = (await api.put(`/users/${log.id}`, log)).data;
+        getJobs();
 
         alert("Applied successfully!");
     }
@@ -64,10 +64,10 @@ const JobPoster = ({ log, setLog, refLog }) => {
                     <div className="text-center mt-4">
                         {log ? (
                             <>
-                                {log.appJobs.includes(job.id) ? (
+                                {job.appId.includes(log.id) ? (
                                     <p className='text-success'>Applied!</p>
                                 ) : (
-                                    <Button onClick={() => applyJob(job.id)} variant="primary" size="lg" className="px-4 py-2 rounded-pill">
+                                    <Button onClick={() => applyJob(log.id, job.id)} variant="primary" size="lg" className="px-4 py-2 rounded-pill">
                                         Apply Now
                                     </Button>
                                 )}

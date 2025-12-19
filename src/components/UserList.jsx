@@ -8,7 +8,7 @@ const UserList = ({ log }) => {
 
     const getUsers = async () => {
 
-        const res = await api.get("/users");
+        const res = await api.get("/get-users");
 
         setUsers(res.data);
 
@@ -17,11 +17,11 @@ const UserList = ({ log }) => {
 
     const changeRole = async (id) => {
 
-        const user = (await api.get(`/users/${id}`)).data;
+        const user = (await api.get(`/getUser/${id}`)).data;
         console.log(user);
         const ad = !user.admin;
         console.log(ad);
-        await api.patch(`/users/${id}`, { ...user, admin: ad });
+        await api.put(`/update-user/${id}`, { ...user, admin: ad });
         getUsers();
     }
 
@@ -56,7 +56,7 @@ const UserList = ({ log }) => {
                 </Table>
 
             ) : (<>
-                <p>Users not found!</p>
+                <h3 className='mt-5 text-center text-primary'>Loading!</h3>
             </>)
             }
         </section>

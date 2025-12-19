@@ -33,14 +33,16 @@ const ExpOv = ({ profile, setProfile }) => {
 
         setProfile({ ...profile, experience: expList });
 
-        await api.put(`/profile/${profile.id}`, profile);
+        const res = (await api.put(`/update-profile`, profile)).data;
+
+        setProfile(res);
 
         setExp({
-        name: '',
-        joinD: '',
-        lastW: '',
-        role: ''
-    });
+            name: '',
+            joinD: '',
+            lastW: '',
+            role: ''
+        });
 
     };
 

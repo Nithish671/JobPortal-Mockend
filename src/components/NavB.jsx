@@ -115,7 +115,6 @@ function NavB({ log, search, setSearch, setLog, setProfile }) {
                     </Offcanvas.Body>
                 </Navbar.Offcanvas>
 
-                {/* Desktop logout */}
                 {log && (
                     <Button
                         variant="outline-danger"

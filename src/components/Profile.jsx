@@ -11,13 +11,15 @@ const Profile = ({ log, setLog, profile, setProfile }) => {
     const deleteSkill = async (i) => {
         const del = profile.skills.filter((item) => item !== i);
         setProfile({ ...profile, skills: del });
-        await api.put(`/profile/${profile.id}`, { ...profile, skills: del });
+        await api.put(`/update-profile`, { ...profile, skills: del });
     };
 
     const deleteExp = async (i) => {
-        const del = profile.experience.filter((_, index) => index !== i);
-        setProfile({ ...profile, experience: del });
-        await api.put(`/profile/${profile.id}`, { ...profile, experience: del });
+        const res = await api.delete(`/delete-exp/${i}`);
+        
+        const pro = (await api.get(`/get-profile/${profile.email}`)).data;
+
+        setProfile(pro);
     };
 
     return (
@@ -108,7 +110,7 @@ const Profile = ({ log, setLog, profile, setProfile }) => {
                                         size="sm"
                                         variant="outline-danger"
                                         className="ms-3"
-                                        onClick={() => deleteExp(index)}
+                                        onClick={() => deleteExp(ele.id)}
                                     >
                                         Delete
                                     </Button>

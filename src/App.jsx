@@ -48,14 +48,16 @@ function App() {
 
   const getJobs = async () => {
 
-    const res = (await api.get("/jobs")).data;
+    const res = (await api.get("/get-jobs")).data;
+
+    console.log(res);
 
     setJobs(res);
   }
 
   const refLog = async () => {
-    setLog(JSON.parse(localStorage.getItem("log"))[0]);
-    setProfile(pro[0]);
+    setLog(JSON.parse(localStorage.getItem("log")));
+    setProfile(log.profile);
   }
 
   return (
@@ -71,8 +73,8 @@ function App() {
           <Route path='/login' element={<Login setProfile={setProfile} log={log} setLog={setLog} />} />
           <Route path='/users' element={<UserList log={log} />} />
           <Route path='/add-job' element={<AddJob log={log} getJobs={getJobs} />} />
-          <Route path='/job' element={<JobPoster log={log} setLog={setLog} refLog={refLog} />} />
-          <Route path='/job-search' element={<JobSearch jobs={jobs} search={search} />} />
+          <Route path='/job' element={<JobPoster getJobs={getJobs} log={log} setLog={setLog} refLog={refLog} />} />
+          <Route path='/job-search' element={<JobSearch getJobs={getJobs} log={log} jobs={jobs} search={search} />} />
           <Route path='/interview' element={<InterviewPreparation />} />
           <Route path="/interview-questions" element={<InterviewQuestions />} />
           <Route path="/mock-tests" element={<MockTests />} />

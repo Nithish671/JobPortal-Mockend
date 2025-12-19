@@ -26,7 +26,7 @@ const AddJob = ({ getJobs }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const res = await api.post("/jobs", job);
+        const res = await api.post("/save-job", job);
 
         setMsg({
             show: true,

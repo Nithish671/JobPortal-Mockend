@@ -3,7 +3,7 @@ import { Alert, Button, Col, Container, FloatingLabel, Form, Row } from 'react-b
 import { useNavigate } from 'react-router-dom'
 import api from '../api/api'
 
-const Signup = ({ log, setLog, setProfile, profile }) => {
+const Signup = ({ log, setLog }) => {
 
     const navigate = useNavigate();
 
@@ -11,7 +11,15 @@ const Signup = ({ log, setLog, setProfile, profile }) => {
         name: "",
         email: "",
         password: "",
-        admin: false
+        admin: false,
+        profile: {
+            email: '',
+            skills: [],
+            experience: [],
+            summary: '',
+            phone: '',
+            location: ''
+        }
     });
 
     const [msg, setMsg] = useState({
@@ -51,7 +59,9 @@ const Signup = ({ log, setLog, setProfile, profile }) => {
         setUser({ ...user, email: normalizeEmail(user.email) });
 
 
-        const res = await api.get(`/users?email=${user.email}`);
+        const res = await api.get(`/get-user/${user.email}`);
+
+        console.log(res);
 
         if (res.data.length > 0) {
             setMsg(
@@ -67,16 +77,7 @@ const Signup = ({ log, setLog, setProfile, profile }) => {
             return;
         }
 
-        const newProfile = {
-            ...profile,
-            email: user.email
-        };
-
-        setProfile({ ...profile, email: user.email });
-        setTimeout(() => { }, 1000);
-
-        await api.post("/users", user);
-        await api.post("/profile", newProfile);
+        await api.post("/save-user", user);
 
         setUser({
             name: "",

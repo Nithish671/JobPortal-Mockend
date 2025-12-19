@@ -35,7 +35,7 @@ const Login = ({ log, setLog, setProfile }) => {
 
     const norEmail = normalizeEmail(user.email);
 
-    const res = (await api.get(`/users?email=${norEmail}`)).data;
+    const res = (await api.get(`/get-user/${norEmail}`)).data;
 
     if (res.length < 1) {
 
@@ -50,7 +50,7 @@ const Login = ({ log, setLog, setProfile }) => {
 
     console.log(res);
 
-    if (res[0].password == user.password) {
+    if (res.password == user.password) {
 
       setMsg({
         show: true,
@@ -58,15 +58,11 @@ const Login = ({ log, setLog, setProfile }) => {
         text: "Logged in successfully!"
       });
 
-      const pro = (await api.get(`/profile?email=${norEmail}`)).data;
-
-      console.log(pro);
-
-      setProfile(pro[0]);
+      setProfile(res.profile);
 
       localStorage.setItem("log", JSON.stringify(res));
 
-      setLog(JSON.parse(localStorage.getItem("log"))[0]);
+      setLog(JSON.parse(localStorage.getItem("log")));
 
       setTimeout(() => {
         navigate("/");

@@ -21,7 +21,9 @@ const Overl = ({profile, setProfile}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        await api.put(`/profile/${profile.id}`, profile);
+        const res = (await api.put(`/update-profile`, profile)).data;
+
+        setProfile(res);
 
         setShow(false);
     };
